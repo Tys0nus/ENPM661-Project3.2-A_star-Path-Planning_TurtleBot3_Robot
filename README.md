@@ -1,4 +1,4 @@
-# A-star for Non-holonomic Constraints
+# A-star for Robot with Non-holonomic Constraints
 This project implements the A* algorithm to find the optimal path for a robot with non-holonomic constraints, specifically a differential drive robot with 8 action sets for movement.
 
 # Part 1:
