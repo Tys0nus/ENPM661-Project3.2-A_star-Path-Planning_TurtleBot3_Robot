@@ -1,6 +1,10 @@
 # A-star for Robot with Non-holonomic Constraints
 This project implements the A* algorithm to find the optimal path for a robot with non-holonomic constraints, specifically a differential drive robot with 8 action sets for movement.
 
+Sim Output:
+
+![](https://github.com/ankurchavan1/A-star_for_non-holonomic_constraints/blob/main/sim_output/sim_2D_viz.gif)
+
 # Part 1:
 In Part 1, the A* algorithm is implemented in Python programming language with tkinter GUI for visualization. The visualization shows the exploration of nodes during the algorithm and the final optimal path from start to goal node on a 2D plane.
 
