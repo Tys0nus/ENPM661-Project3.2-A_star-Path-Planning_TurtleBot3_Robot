@@ -61,11 +61,13 @@ def squircles(canvas, points, corner_radius, **kwargs):
     return canvas.create_polygon(poly_points, **kwargs, smooth=True)
     
 def main(start, goal, clearance,scaled_val=1):
+    scale_val = 250
     clearance = clearance
     radius = robot_radius
     distance = clearance + radius
+    distance = distance*scale_val
 
-    scale_val = 250
+    
 
     cr = cr = 0.10*scale_val #Fillet radius
 
@@ -115,7 +117,6 @@ def main(start, goal, clearance,scaled_val=1):
 
 if __name__ == "__main__":
     main()
-
 
 
     
