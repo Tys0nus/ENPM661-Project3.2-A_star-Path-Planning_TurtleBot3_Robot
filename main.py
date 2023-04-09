@@ -1,5 +1,5 @@
 import visualize as vis
-import a_star_nh_ankur_aditya as astr
+# import a_star_nh_ankur_aditya as astr
 import time
 
 if __name__ == "__main__":
@@ -25,8 +25,7 @@ if __name__ == "__main__":
     y = 1 - y
     goal = (x,y, th)
 
-    cl = int(input("Enter a Clearance value (mm): "))
-    cl = cl*1000
+    cl = float(input("Enter a Clearance value: "))
     
     rpm_1, rpm_2 = [int(x) for x in input("Enter rpm_1 and rpm_2 : ").split()] 
     if not (0 <= rpm_1 <= 250) or not(0 <= rpm_2 <= 250):
