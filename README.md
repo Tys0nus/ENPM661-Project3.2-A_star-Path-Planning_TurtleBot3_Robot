@@ -23,4 +23,4 @@ To get started with the project, you will need to have Python, ROS Noetic, and G
 Contributions to the project are welcome. If you find any issues or want to make improvements to the code, feel free to submit a pull request.
 
 # Result Recordings:
-Click here [https://drive.google.com/drive/folders/1pAvgxaLRlygtfuQnGSN34jsi4ySPoj06?usp=share_link]
+2D Visualization - [https://drive.google.com/file/d/1HCuRICbRDp1BVJvZ50LMOgotHLTfFFQ9/view?usp=share_link]
