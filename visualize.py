@@ -5,9 +5,12 @@ import math
 global robot_radius
 robot_radius = 0.105
 
-def points(node):
+global goal_thr
+goal_thr = 0.2
+
+def points(node,scale_val):
     x,y,th = node
-    r = 5
+    r = (robot_radius/2)*scale_val
     x0 = x - r
     y0 = y - r
     x1 = x + r
@@ -60,16 +63,13 @@ def squircles(canvas, points, corner_radius, **kwargs):
     
     return canvas.create_polygon(poly_points, **kwargs, smooth=True)
     
-def main(start, goal, clearance,scaled_val=1):
-    scale_val = 250
-    clearance = clearance
+def main(start, goal, clearance,scale_val=1):
+    global goal_thr
+    goal_thr *= scale_val
     radius = robot_radius
     distance = clearance + radius
-    distance = distance*scale_val
 
-    
-
-    cr = cr = 0.10*scale_val #Fillet radius
+    cr = 0.10*scale_val #Fillet radius
 
     root = tk.Tk()
 
@@ -80,48 +80,52 @@ def main(start, goal, clearance,scaled_val=1):
     canvas = tk.Canvas(root, width=wd, height=ht,background='white')
     canvas.pack()
 
-    left_wall = [0, 2*scale_val, 0, 0, distance, 0, distance, 2*scale_val]                                                               
-    right_wall = [6*scale_val - distance, 2*scale_val, 6*scale_val - distance, 0, 6*scale_val, 0, 6*scale_val, 2*scale_val]
-    upper_wall = [0, distance, 0, 0, 6*scale_val, 0, 6*scale_val, distance]
-    bottom_wall = [0, 2*scale_val, 0, 2*scale_val - distance, 6*scale_val, 2*scale_val - distance, 6*scale_val, 2*scale_val]
+    left_wall = [0, 2*scale_val, 0, 0, distance*scale_val, 0, distance*scale_val, 2*scale_val]                                                               
+    right_wall = [(6 - distance)*scale_val, 2*scale_val, (6 - distance)*scale_val, 0, 6*scale_val, 0, 6*scale_val, 2*scale_val]
+    upper_wall = [0, distance*scale_val, 0, 0, 6*scale_val, 0, 6*scale_val, distance*scale_val]
+    bottom_wall = [0, 2*scale_val, 0, (2 - distance)*scale_val, 6*scale_val, (2 - distance)*scale_val, 6*scale_val, 2*scale_val]
 
     canvas.create_polygon(left_wall, fill='orange')    # left wall
     canvas.create_polygon(right_wall, fill='orange')   # right wall
     canvas.create_polygon(upper_wall, fill='orange')   # upper wall
     canvas.create_polygon(bottom_wall, fill='orange')  # bottom wall
 
-    rect_obs1_c = [(1.5*scale_val - distance, 0 - distance), (1.5*scale_val - distance, 1.25*scale_val + distance), (1.65*scale_val + distance, 1.25*scale_val + distance), (1.65*scale_val + distance, 0 - distance)]
-    rect_obs2_c = [(2.5*scale_val - distance, 0.75*scale_val - distance), (2.5*scale_val - distance, 2*scale_val + distance), (2.65*scale_val + distance, 2*scale_val + distance), (2.65*scale_val + distance, 0.75*scale_val - distance)]
+    rect_obs1_c = [(1.5 - distance, 0 - distance), (1.5 - distance, 1.25 + distance), (1.65 + distance, 1.25 + distance), (1.65 + distance, 0 - distance)]
+    rect_obs1_c = [(m*scale_val,n*scale_val) for (m,n) in rect_obs1_c]
+    rect_obs2_c = [(2.5- distance, 0.75 - distance), (2.5 - distance, 2 + distance), (2.65 + distance, 2 + distance), (2.65 + distance, 0.75 - distance)]
+    rect_obs2_c = [(m*scale_val,n*scale_val) for (m,n) in rect_obs2_c]
 
     squircles(canvas,rect_obs1_c,cr,fill='orange') # Inflated Obs 1
     squircles(canvas,rect_obs2_c,cr,fill='orange') # Inflated Obs 2
 
-    rect_obs1 = [1.50*scale_val, 0, 1.50*scale_val, 1.25*scale_val, 1.65*scale_val, 1.25*scale_val, 1.65*scale_val, 0]
-    rect_obs2 = [2.50*scale_val, 0.75*scale_val, 2.50*scale_val, 2*scale_val, 2.65*scale_val, 2*scale_val, 2.65*scale_val, 0.75*scale_val]
+    rect_obs1 = [1.50, 0, 1.50, 1.25, 1.65, 1.25, 1.65, 0]
+    rect_obs1 = [m*scale_val for m in rect_obs1]
+    rect_obs2 = [2.50, 0.75, 2.50, 2, 2.65, 2, 2.65, 0.75]
+    rect_obs2 = [m*scale_val for m in rect_obs2]
 
     canvas.create_polygon(rect_obs1, fill='blue')
     canvas.create_polygon(rect_obs2, fill='blue')
 
-    center_x, center_y = 4*scale_val, 0.9*scale_val
-    radius = 0.5*scale_val
+    center_x, center_y = 4, 0.9
+    obs_radius = 0.5
 
-    x0 = center_x - radius
-    y0 = center_y - radius
-    x1 = center_x + radius
-    y1 = center_y + radius
+    x0 = center_x - obs_radius
+    y0 = center_y - obs_radius
+    x1 = center_x + obs_radius
+    y1 = center_y + obs_radius
 
-    canvas.create_oval(x0 - distance, y0 - distance, x1 + distance, y1 + distance, fill="orange",outline="orange")   # inflated circle
-    canvas.create_oval(x0, y0, x1, y1, fill="blue",outline='blue')   
+    canvas.create_oval((x0 - distance)*scale_val, (y0 - distance)*scale_val, (x1 + distance)*scale_val, (y1 + distance)*scale_val, fill="orange",outline="orange")   # inflated circle
+    canvas.create_oval(x0*scale_val, y0*scale_val, x1*scale_val, y1*scale_val, fill="blue",outline='blue')  
+
+    pts = points(start,scale_val)
+    canvas.create_oval(pts, fill='green')
+    pts = points(goal,scale_val)
+    canvas.create_oval(pts, fill='green')
+    pts = [goal[0]-goal_thr,goal[1]-goal_thr,goal[0]+goal_thr,goal[1]+goal_thr]
+    canvas.create_oval(pts,outline='black')
 
     return root, canvas
 
 if __name__ == "__main__":
     main()
-
-
-    
-
-
-
-
-    
+ 
