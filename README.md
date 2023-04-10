@@ -67,7 +67,9 @@ The code requires the following dependencies:
 2.  Navigate to the repository directory.
 3.  Install the necessary dependencies.
 4.  Change directory to catkin workspace.
-5.  Run the main.py file and give the inputs for star position, goal position, clearance, rpm1 and rpm2 as given in part1 above.
+5.  Run the main.py file located in part01 folder, this will create a track.txt file directly into part02 folder which contains the ROS package.
+6.  The main.py file will ask the inputs for star position, goal position, clearance, rpm1 and rpm2. Enter them as instructed in part1.
+7.  main.py will output the 2D visualization of node exploration and path finding.
 5.  Run ROS core.
 6.  Launch the gazebo.launch file using the following command: roslaunch astar_nh_ankur_aditya gazebo.launch
 
