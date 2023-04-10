@@ -43,8 +43,11 @@ The code requires the following dependencies:
 7.  Wait for the code to execute, as it may take some time to complete.
 8.  The result will be displayed as an animation of finding the goal node and visualizing the optimal path.
 
-# Results
+# Result:
 The project provides a clear visualization of the exploration of nodes during the A* algorithm and the final optimal path of the robot from start node to goal node. The tkinter GUI is used to plot the nodes and the path on a 2D plane.
+
+# Result Recording:
+2D Visualization - [https://drive.google.com/file/d/1HCuRICbRDp1BVJvZ50LMOgotHLTfFFQ9/view?usp=share_link]
 
 # Part 2:
 In Part 2, the A* algorithm is implemented to find the optimal path for the Turtlebot3 burger, which is simulated in Gazebo world using ROS subscriber and publisher.
@@ -69,9 +72,6 @@ The code requires the following dependencies:
 6.  Launch the gazebo.launch file using the following command: roslaunch astar_nh_ankur_aditya gazebo.launch
 
 
-# Results
+# Result:
 The simulation shows the Turtlebot3 burger moving from a user-defined start position to a goal position using the A* algorithm. The visualization is done in the Gazebo world.
-
-# Result Recordings:
-2D Visualization - [https://drive.google.com/file/d/1HCuRICbRDp1BVJvZ50LMOgotHLTfFFQ9/view?usp=share_link]
 
