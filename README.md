@@ -36,7 +36,7 @@ The code requires the following dependencies:
 - Enter the Start Coordinates: -0.35 -0.75 90
 - Enter the Goal Coordinates: 5.25 -0.75 0
 - Enter a Clearance value: 0.005
-- Enter rpm_1 and rpm_2: 50 200
+- Enter rpm_1 and rpm_2: 50 100
 
 
 6.  Enter the required inputs and press enter.
