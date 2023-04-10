@@ -71,7 +71,8 @@ The code requires the following dependencies:
 6.  The main.py file will ask the inputs for star position, goal position, clearance, rpm1 and rpm2. Enter them as instructed in part1.
 7.  main.py will output the 2D visualization of node exploration and path finding.
 5.  Run ROS core in another terminal.
-6.  Run the following command "rosrun astar_nh_ankur_aditya robot_publisher.py" in another terminal
+6.  Run "roslaunch astar_nh_ankur_aditya gazebo.launch"
+7.  Run the f"rosrun astar_nh_ankur_aditya robot_publisher.py"ollowing command "rosrun astar_nh_ankur_aditya robot_publisher.py" in another terminal
 
 
 # Result:
