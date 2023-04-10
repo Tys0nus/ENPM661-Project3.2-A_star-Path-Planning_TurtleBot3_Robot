@@ -63,7 +63,10 @@ The code requires the following dependencies:
 1.  Clone the repository to your local machine.
 2.  Navigate to the repository directory.
 3.  Install the necessary dependencies.
-4.  Run ROS Noetic and launch the launch file using the roslaunch command. 
+4.  Change directory to catkin workspace.
+5.  Run the main.py file and give the inputs for star position, goal position, clearance, rpm1 and rpm2 as given in part1 above.
+5.  Run ROS core.
+6.  Launch the gazebo.launch file using the following command: roslaunch astar_nh_ankur_aditya gazebo.launch
 
 
 # Results
@@ -71,5 +74,4 @@ The simulation shows the Turtlebot3 burger moving from a user-defined start posi
 
 # Result Recordings:
 2D Visualization - [https://drive.google.com/file/d/1HCuRICbRDp1BVJvZ50LMOgotHLTfFFQ9/view?usp=share_link]
-
 
