@@ -77,3 +77,5 @@ The code requires the following dependencies:
 # Result:
 The simulation shows the Turtlebot3 burger moving from a user-defined start position to a goal position using the A* algorithm. The visualization is done in the Gazebo world.
 
+# Result Recording:
+Turtlebot3 Visualization - [https://drive.google.com/file/d/1yatLnT_VPhdwq5tWCuoflM3u1mRgJmVH/view?usp=share_link]
